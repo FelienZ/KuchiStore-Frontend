@@ -25,10 +25,11 @@
     "noUncheckedSideEffectImports": true
   },
   "include": ["src"],
+  "extends": "./tsconfig.json",
   "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./src/*"
+        "src/*"
       ]
     }
 }
