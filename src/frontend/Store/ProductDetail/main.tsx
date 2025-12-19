@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { Spinner } from "@/components/ui/spinner"
-import useProductDetail from "@/utils/util/productDetail"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import Detail from "./Detail"
+import useProductDetail from "@/utils/util/Hooks/Products/useProductDetail"
 
 export default function ProductDetail(){
     const params = useParams()
@@ -16,7 +16,7 @@ export default function ProductDetail(){
     const mapSpecification = []
     for(const key in product?.specifications){
       //representasi -> spec: key, prod.spec[spec]: val
-      mapSpecification.push({key, detail: product.specifications[key]})
+      mapSpecification.push({key, detail: (product.specifications[key])})
     }
     function handleReduceOrder():void{
       setOrder(order-1)
