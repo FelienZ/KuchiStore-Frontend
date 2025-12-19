@@ -21,7 +21,7 @@ export default function Hero(){
     }, [selected])
 
     return(
-        <section className="flex relative border rounded-xs w-full h-[30vh] md:h-[50vh] lg:h-[60vh] xl:h-[80vh]">
+        <section className="flex relative border mx-5 rounded-xs h-[30vh] md:h-[50vh] lg:h-[60vh] xl:h-[80vh]">
             <motion.button
                 initial={false}
                 aria-label="Previous"

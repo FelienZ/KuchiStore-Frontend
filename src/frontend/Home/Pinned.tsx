@@ -1,11 +1,11 @@
 import { CarouselSpacing } from "@/components/Common/Carousel"
 import { Spinner } from "@/components/ui/spinner"
-import useFilteredProducts from "@/utils/util/filteredProducts"
+import useFilteredProducts from "@/utils/util/Hooks/Products/useFilteredProducts"
 
 export default function Pinned(){
-    const popularProduct = useFilteredProducts('filter', 'popular')
-    const newProduct = useFilteredProducts('filter', '_new')
-    const recommendedProduct = useFilteredProducts('filter', 'recommended')
+    const popularProduct = useFilteredProducts('label', 'popular')
+    const newProduct = useFilteredProducts('label', '_new')
+    const recommendedProduct = useFilteredProducts('label', 'recommended')
     return(
         <section className="flex flex-col gap-15 divide-y">
             <div className="flex flex-col gap-3 pb-5">
@@ -16,7 +16,13 @@ export default function Pinned(){
                         <Spinner/>
                     </div>
                 ) : (
-                    <CarouselSpacing payload={popularProduct.data?.payload} limit={8}/>
+                    Number(popularProduct.data?.payload.length) ? (
+                        <CarouselSpacing payload={popularProduct.data?.payload} limit={8}/>
+                    ):  (
+                        <div className="flex justify-center items-center  border rounded-sm h-[50vh]">
+                            <p>Gagal Memuat Data</p>
+                        </div>
+                    )
                 )}
             </div>
             <div className="flex flex-col gap-3 pb-5">
@@ -27,7 +33,13 @@ export default function Pinned(){
                         <Spinner/>
                     </div>
                 ): (
-                <CarouselSpacing payload={newProduct.data?.payload} limit={8}/>
+                    Number(newProduct.data?.payload.length) ? (
+                        <CarouselSpacing payload={newProduct.data?.payload} limit={8}/>
+                    ):  (
+                        <div className="flex justify-center items-center  border rounded-sm h-[50vh]">
+                            <p>Gagal Memuat Data</p>
+                        </div>
+                    )
                 )
                 }
             </div>
@@ -39,8 +51,14 @@ export default function Pinned(){
                         <Spinner/>
                     </div>
                 ): (
-                    <CarouselSpacing payload={recommendedProduct.data?.payload} limit={8}/>  
-                )} 
+                    Number(recommendedProduct.data?.payload.length) ? (
+                        <CarouselSpacing payload={recommendedProduct.data?.payload} limit={8}/>
+                    ):  (
+                        <div className="flex justify-center items-center  border rounded-sm h-[50vh]">
+                            <p>Gagal Memuat Data</p>
+                        </div>
+                    )  
+                    )} 
             </div>
         </section>
     )

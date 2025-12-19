@@ -4,7 +4,7 @@ import Pinned from "./Pinned";
 
 export default function Home(){
     return(
-        <article className="flex flex-col gap-5 w-full">
+        <article className="flex flex-col gap-5 w-full place-self-center">
             <Hero/>
             <Brands/>
             <section className="w-[90vw] flex flex-col gap-5 self-center">
