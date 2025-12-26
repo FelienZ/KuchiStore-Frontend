@@ -1,10 +1,10 @@
-import axios from 'axios'
-import type { Product } from '../../types/Products/Products'
-import type { ProductItemData } from '../../types/Products/ProductData'
+import type { Product } from '../../../types/Products/Products'
+import type { ProductItemData } from '../../../types/Products/ProductData'
 import { toast } from 'sonner'
+import { Request } from '../../interceptor'
 export default async function GetProducts(pages:string): Promise<Product<ProductItemData[]>>{
     try {
-        const {data: response} = await axios.get(`http://localhost:3000/api/products?page=${pages}`)
+        const {data: response} = await Request.get(`http://localhost:3000/api/products?page=${pages}`)
         return response
     } catch (error) {
         toast('Gagal Memuat Seluruh Produk')
