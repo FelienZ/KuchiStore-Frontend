@@ -1,7 +1,7 @@
 import type { Register } from "@/utils/types/Auth/Request/Register";
-import axios from "axios";
+import { Request } from "../interceptor";
 
 export default async function CreateAccount(payload: Register){
-    const {data: response} = await axios.post(`http://localhost:3000/api/auth/register`, payload)
+    const {data: response} = await Request.post(`http://localhost:3000/api/auth/register`, payload)
     return response
 }

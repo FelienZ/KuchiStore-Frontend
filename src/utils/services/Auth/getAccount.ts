@@ -1,10 +1,10 @@
 import type { Auth } from "@/utils/types/Auth/Response/Auth";
-import axios from "axios";
 import { toast } from "sonner";
+import { Request } from "../interceptor";
 
 export default async function GetAccount(email: string, password: string): Promise<Auth>{
     try {
-        const {data: response} = await axios.post(`http://localhost:3000/api/auth/login`, {email, password}, {withCredentials: true})
+        const {data: response} = await Request.post(`http://localhost:3000/api/auth/login`, {email, password}, {withCredentials: true})
         toast('Berhasil Login!')
         return response
     } catch (error) {
