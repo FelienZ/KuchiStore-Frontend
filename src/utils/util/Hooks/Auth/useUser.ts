@@ -5,6 +5,6 @@ export default function useUser(){
     return useQuery({
         queryKey: ['me'],
         queryFn: GetUser,
-        staleTime: 1000 * 7 * 60
+        staleTime: 1000 * 5 * 60,
     })
 }
