@@ -2,9 +2,10 @@ import type { Auth } from "@/utils/types/Auth/Response/Auth";
 import { toast } from "sonner";
 import { Request } from "../interceptor";
 
+const API_URL = import.meta.env.VITE_API_URL
 export default async function GetAccount(email: string, password: string): Promise<Auth>{
     try {
-        const {data: response} = await Request.post(`http://localhost:3000/api/auth/login`, {email, password}, {withCredentials: true})
+        const {data: response} = await Request.post(`${API_URL}/api/auth/login`, {email, password}, {withCredentials: true})
         toast('Berhasil Login!')
         return response
     } catch (error) {
