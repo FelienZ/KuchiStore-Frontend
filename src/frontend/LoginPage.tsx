@@ -5,30 +5,31 @@ import ProtectedRoutes from "@/utils/util/Helper/protectedRoutes";
 import useAccount from "@/utils/util/Hooks/Auth/useAccount";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
-import { toast } from "sonner";
 
-export function LoginPage() {
-  const type = 'Login Form'
-  const [data, setData] = useState(userDummy)
-  const { isLoading, isAuthenticated, isError } = useAuth()
-  const {isPending, mutate} = useAccount(data.email, data.password)
+export default function LoginPage() {
+  const type = "Login Form";
+  const [data, setData] = useState(userDummy);
+  const { isLoading, isAuthenticated } = useAuth();
+  const { isPending, mutate } = useAccount(data.email, data.password);
   const location = useLocation();
+  const from = location.state?.from.pathname;
   const navigate = useNavigate();
   useEffect(() => {
+    if ((from === "/login" || from === undefined) && isAuthenticated) {
+      navigate("/", { replace: true, viewTransition: true });
+      return;
+    }
     if (!isLoading && isAuthenticated) {
-      navigate(location.state?.from.pathname, { replace: true, viewTransition: true })
-      }
-      if(isError && !isAuthenticated){
-          toast('Gagal Memgambil Data User')
-      }
-  }, [isAuthenticated, isLoading, navigate, isError, location])
-  function HandleSubmit(e: React.FormEvent){
-    e.preventDefault()
-    mutate()
+      navigate(from, { replace: true, viewTransition: true });
+    }
+  }, [isAuthenticated, isLoading, navigate, from]);
+  function HandleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    mutate();
   }
   return (
     <section className="w-full h-full scrollbar-hide place-content-center place-items-center absolute">
-      {(!isLoading && !isAuthenticated) ? (
+      {!isLoading && !isAuthenticated ? (
         <FormLogin
           type={type}
           data={data}
@@ -37,8 +38,8 @@ export function LoginPage() {
           HandleSubmit={HandleSubmit}
         />
       ) : (
-        <ProtectedRoutes/>
+        <ProtectedRoutes />
       )}
     </section>
-  )
+  );
 }
