@@ -4,7 +4,6 @@ import { toast } from 'sonner'
 import { Request } from '../../interceptor'
 
 const API_URL = import.meta.env.VITE_API_URL
-console.log(API_URL)
 export default async function GetProducts(pages:string): Promise<Product<ProductItemData[]>>{
     try {
         const {data: response} = await Request.get(`${API_URL}/api/products?page=${pages}`)

@@ -18,7 +18,6 @@ export default function Summary({
   handleSubmitAccount,
 }: SummaryData) {
   const account = payload;
-  // console.log("cek pyload: ", payload.payload);
   const createdAt = account
     ? new Intl.DateTimeFormat("id-ID", {
         year: "numeric",
