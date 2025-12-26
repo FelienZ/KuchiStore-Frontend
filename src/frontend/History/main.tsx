@@ -1,7 +1,5 @@
-export default function HistoryPage(){
-    return(
-        <article>
-            <p>Ini Halaman History</p>
-        </article>
-    )
+import NotFound from "../404";
+
+export default function HistoryPage() {
+  return <NotFound />;
 }
