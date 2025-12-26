@@ -1,4 +1,4 @@
-import GetFilteredProducts from "../../../services/Products/getFilteredProducts"
+import GetFilteredProducts from "../../../services/Products/GET/getFilteredProducts"
 import { useQuery } from "@tanstack/react-query"
 import type { Product } from "../../../types/Products/Products"
 import type { ProductItemData } from "../../../types/Products/ProductData"

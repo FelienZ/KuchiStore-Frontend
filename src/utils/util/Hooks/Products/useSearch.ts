@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import GetProductsByName from "../../../services/Products/getProductsByName";
+import GetProductsByName from "../../../services/Products/GET/getProductsByName";
 
 export default function useSearch(name: string){
     return useQuery({

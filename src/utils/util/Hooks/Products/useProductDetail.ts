@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import getProductDetail from "../../../services/Products/getProductDetail";
+import getProductDetail from "../../../services/Products/GET/getProductDetail";
 import type { Product } from "../../../types/Products/Products";
 import type { ProductItemData } from "../../../types/Products/ProductData";
 
