@@ -5,30 +5,68 @@ import type { UserDetail } from "@/utils/types/Auth/Response/UserDetail";
 import type React from "react";
 import { useEffect, useState } from "react";
 import useUser from "../Hooks/Auth/useUser";
+import { queryClient } from "../Helper/QueryClientInstance";
+import { RequestInterceptor } from "@/utils/services/interceptor";
+import { useLocation } from "react-router";
 
-export default function AuthProvider({children}: {children: React.ReactNode}){
-    const dummy = {
-        id: null,
-        username: null,
-        email: null,
-        detail: null
+const dummy = {
+  id: null,
+  username: null,
+  email: null,
+  detail: null,
+  created_at: null,
+};
+
+type AuthStatus = "loading" | "authenticated" | "unauthenticated";
+export default function AuthProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [account, setAccount] = useState<User<UserDetail>>(dummy);
+  const [isAuthStatus, setIsAuthStatus] = useState<AuthStatus>("loading");
+  const { data, isError } = useUser();
+  const location = useLocation();
+  function login(data: User<UserDetail>) {
+    setAccount(data);
+    setIsAuthStatus("authenticated");
+  }
+  function logout() {
+    setAccount(dummy);
+    setIsAuthStatus("unauthenticated");
+    queryClient.removeQueries({ queryKey: ["me"] });
+  }
+  function revalidateAuth() {
+    setIsAuthStatus("loading");
+    if (account.id !== null) {
+      return login(account);
+    } else if (isError && !account.id) {
+      return logout();
     }
-    const [account, setAccount] = useState<User<UserDetail>>(dummy)
-    const {data, isLoading, isError} = useUser()
-    useEffect(()=>{
-        if(data?.payload){
-            setAccount({
-                id: data.payload.id,
-                username: data.payload.username,
-                email: data.payload.email,
-                detail: data.payload.detail
-            })
-        }
-    }, [data])
-    const isAuthenticated = !!account.id
-    return(
-        <AuthContext.Provider value={{account, setAccount, isAuthenticated, isLoading, isError}}>
-            {children}
-        </AuthContext.Provider>
-    )
+  }
+  useEffect(() => {
+    if (data?.payload) {
+      login(data.payload);
+    }
+  }, [data]);
+  useEffect(() => {
+    RequestInterceptor(logout);
+  }, [location.pathname]);
+  const isAuthenticated = isAuthStatus === "authenticated";
+  const isLoadingAuth = isAuthStatus === "loading";
+  return (
+    <AuthContext.Provider
+      value={{
+        account,
+        isAuthenticated,
+        isLoading: isLoadingAuth,
+        isError,
+        revalidateAuth,
+        login,
+        logout,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 }
