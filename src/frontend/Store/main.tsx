@@ -1,10 +1,10 @@
 import { PaginationDemo } from "@/components/Common/Pagination"
 import Products from "./Products"
-import { Spinner } from "@/components/ui/spinner"
 import { useState } from "react"
 import { useNavigate, useSearchParams } from "react-router"
 import { Button } from "@/components/ui/button"
 import SearchHelper from "@/utils/util/Helper/SearchMode"
+import LoadingFull from "../Loading"
 
 export default function Dashboard(){
     const [pages, setPages] = useState(1)
@@ -16,10 +16,7 @@ export default function Dashboard(){
         <article className="flex flex-col gap-5 w-full">
             <section className="w-[90vw] min-h-screen justify-between flex flex-col gap-5 self-center">
                 {products.isLoading ? (
-                    <div className="flex justify-center items-center gap-3 h-screen">
-                        <p>Loading...</p>
-                        <Spinner/>
-                    </div>
+                    <LoadingFull/>
                 ): (products.data?.payload.length ? (<Products payload={products.data?.payload}/>) : (
                     <div className="flex flex-col justify-center items-center gap-3 h-screen">
                         <img src="/Kuchistore.svg" alt="storelogo" className="w-[5vw] border"/>
