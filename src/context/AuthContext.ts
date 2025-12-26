@@ -3,9 +3,11 @@ import { createContext } from "react";
 
 const defaultState: AuthState = {
     account: null,
-    setAccount: null,
     isAuthenticated: false,
     isLoading: false,
-    isError: false
+    isError: false,
+    login: ()=>{},
+    revalidateAuth: ()=> {},
+    logout: ()=> {}
 }
 export const AuthContext = createContext<AuthState>(defaultState)
