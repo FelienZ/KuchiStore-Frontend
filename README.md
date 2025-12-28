@@ -1,6 +1,6 @@
 # 🛍️ KuchiStore Frontend
 
-Aplikasi frontend e-commerce modern yang dibangun dengan React, TypeScript, dan Vite. Menyediakan pengalaman berbelanja yang cepat dan responsif dengan UI yang cantik menggunakan Tailwind CSS dan Radix UI.
+Aplikasi frontend e-commerce gadget modern berbasis web yang dibangun dengan React, TypeScript, dan Vite. Menyediakan pengalaman berbelanja yang cepat dan responsif dengan UI yang Minimalis menggunakan Tailwind CSS dan Radix UI.
 
 ## 📋 Daftar Isi
 
