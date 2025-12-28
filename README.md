@@ -127,6 +127,7 @@ dist/
 
 ```
 
+```
 src/
 ├── main.tsx # Entry point aplikasi
 ├── app.css # Global styles
@@ -183,8 +184,7 @@ src/
 │ └── util/ # Helper utilities
 └── lib/
 └── utils.ts # Utility functions
-
-````
+```
 
 ## 🔐 Environment Variables
 
@@ -197,7 +197,7 @@ VITE_API_TIMEOUT=10000
 
 # Feature Flags
 VITE_ENABLE_DEMO_MODE=false
-````
+```
 
 ### Variable yang Tersedia
 
