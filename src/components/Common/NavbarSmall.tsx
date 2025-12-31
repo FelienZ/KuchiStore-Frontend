@@ -12,8 +12,8 @@ export default function NavbarSmall({ isOpen }: TriggerStatus) {
           to="/"
           className={({ isActive }) =>
             isActive
-              ? "justify-center pb-3 w-full h-full flex items-center gap-2 text-sm"
-              : "flex justify-center pb-3 items-center gap-2 text-sm"
+              ? "justify-center pb-6 pt-3 w-full h-full flex items-center gap-2 text-sm"
+              : "flex justify-center pb-6 pt-3 items-center gap-2 text-sm"
           }
         >
           <Home className="size-4" />
@@ -23,8 +23,8 @@ export default function NavbarSmall({ isOpen }: TriggerStatus) {
           to="/products"
           className={({ isActive }) =>
             isActive
-              ? "justify-center pb-3  w-full h-full flex items-center gap-2 text-sm"
-              : "flex justify-center pb-3 items-center gap-2 text-sm"
+              ? "justify-center pb-6 pt-3  w-full h-full flex items-center gap-2 text-sm"
+              : "flex justify-center pb-6 pt-3 items-center gap-2 text-sm"
           }
         >
           <ShoppingCart className="size-4" />
@@ -34,8 +34,8 @@ export default function NavbarSmall({ isOpen }: TriggerStatus) {
           to="/information"
           className={({ isActive }) =>
             isActive
-              ? "justify-center pb-3  w-full h-full flex items-center gap-2 text-sm"
-              : "flex justify-center pb-3 items-center gap-2 text-sm"
+              ? "justify-center pb-6 pt-3  w-full h-full flex items-center gap-2 text-sm"
+              : "flex justify-center pb-6 pt-3 items-center gap-2 text-sm"
           }
         >
           <HelpCircle className="size-4" />

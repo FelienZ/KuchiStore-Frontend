@@ -21,20 +21,20 @@ export function CarouselSpacing({ payload, limit }: carouselData) {
   }
   return (
     <Carousel className="w-full">
-      <CarouselContent className="-ml-1">
+      <CarouselContent className="md:-ml-1">
         {payload?.map((i, idx) =>
           idx < limit ? (
             <CarouselItem
               key={i.id}
-              className="pl-1 min-[360px]:basis-1/2 lg:basis-1/3 2xl:basis-1/5"
+              className="min-[360px]:basis-1/2 md:basis-1/3 xl:basis-1/4 "
             >
               <div className="p-1">
-                <Card className="rounded-sm py-2 drop-shadow-sm">
-                  <CardContent className="flex flex-col aspect-square items-center gap-4 md:p-6">
+                <Card className="rounded-sm py-2 text-center drop-shadow-sm">
+                  <CardContent className="flex flex-col justify-evenly aspect-square items-center gap-2 md:gap-4 md:p-6">
                     <img
                       src={i.url}
                       alt={i.name}
-                      className="w-full max-[360px]:w-[80%] max-sm:h-[12vh] h-[19vh] md:h-[25vh] scale-90"
+                      className="w-[85%] max-sm:h-30 max-sm:w-full max-lg:h-25 h-55 object-contain"
                     />
                     <div className="flex flex-col items-center gap-3">
                       <h4 className="font-medium max-sm:text-xs place-content-center text-center h-10">

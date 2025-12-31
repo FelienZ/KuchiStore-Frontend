@@ -20,7 +20,6 @@ export default function ProductDetail() {
   useEffect(() => {
     setDetail(data!);
   }, [data]);
-  console.log("cek detail: ", detail);
   const { mutate, isPending } = useMakeOrder(
     {
       id: detail?.payload.id,

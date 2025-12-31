@@ -32,7 +32,7 @@ export default function Navbar({ handleTrigger }: NavbarAction) {
             alt=""
             className="rounded-xs size-8 border"
           />
-          <h1 className="font-bold text-xl">Kuchi Store</h1>
+          <h1 className="font-bold md:text-xl">Kuchi Store</h1>
         </NavigationMenuItem>
         {width < 550 ? (
           width >= 265 ? (
