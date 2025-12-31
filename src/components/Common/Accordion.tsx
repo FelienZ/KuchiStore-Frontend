@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { ArrowRight } from "lucide-react";
 
 type accordion = {
   title: string;
@@ -12,9 +13,16 @@ type accordion = {
     title: string;
     path: string;
   }[];
+  setCategory?: (category: string) => void;
+  category?: string;
 };
-export function AccordionDemo({ title, content, contents }: accordion) {
-  // const [category, setCategory] = useState("");
+export function AccordionDemo({
+  title,
+  content,
+  contents,
+  setCategory,
+  category,
+}: accordion) {
   return (
     <Accordion
       type="single"
@@ -26,10 +34,23 @@ export function AccordionDemo({ title, content, contents }: accordion) {
         <AccordionTrigger className="font-bold">{title}</AccordionTrigger>
         <AccordionContent className="flex flex-col py-5 gap-4 text-balance">
           {contents ? (
-            contents.map((c, idx) => (
-              <p /* onClick={() => setCategory(c.title)} */ key={idx}>
-                {c.title}
-              </p>
+            contents.map((c) => (
+              <div
+                className="flex justify-between items-center"
+                key={c.path}
+                onClick={() => setCategory!(c.path)}
+              >
+                <p
+                  className={
+                    category === c.path
+                      ? "font-semibold text-lime-400 cursor-pointer"
+                      : "cursor-pointer"
+                  }
+                >
+                  {c.title}
+                </p>
+                <ArrowRight />
+              </div>
             ))
           ) : (
             <p>{content}</p>

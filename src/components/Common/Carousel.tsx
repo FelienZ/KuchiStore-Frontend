@@ -34,7 +34,7 @@ export function CarouselSpacing({ payload, limit }: carouselData) {
                     <img
                       src={i.url}
                       alt={i.name}
-                      className="w-[85%] max-sm:h-30 max-sm:w-full max-lg:h-25 h-55 object-contain"
+                      className="w-[85%] max-sm:h-30 max-sm:w-full max-lg:h-35 h-55 object-contain"
                     />
                     <div className="flex flex-col items-center gap-3">
                       <h4 className="font-medium max-sm:text-xs place-content-center text-center h-10">
