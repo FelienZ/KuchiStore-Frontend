@@ -2,7 +2,7 @@ import type { ProductItemData } from "@/utils/types/Products/ProductData"
 import type { Product } from "@/utils/types/Products/Products"
 import { Request } from "../../interceptor"
 
-const API_URL = import.meta.env.VITE_API_URL
+const API_URL = import.meta.env.VITE_API_URL;
 export default async function GetProductsByName(name: string): Promise<Product<ProductItemData[]>> {
     try {
         if(name.length > 3){
