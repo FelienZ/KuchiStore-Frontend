@@ -11,8 +11,9 @@ export default function Dashboard() {
   const [pages, setPages] = useState(1);
   const navigate = useNavigate();
   const [params] = useSearchParams();
+  const [category, setCategory] = useState("");
   const name = params.get("name");
-  const products = SearchHelper(pages, name!);
+  const products = SearchHelper(pages, name!, category);
   const filter = {
     title: "Filter Kategori",
     content: [
@@ -28,6 +29,10 @@ export default function Dashboard() {
         title: "Komputer",
         path: "computer",
       },
+      {
+        title: "Semua",
+        path: "",
+      },
     ],
   };
   return (
@@ -38,7 +43,12 @@ export default function Dashboard() {
         ) : products.data?.payload.length ? (
           <div className="flex flex-col gap-3">
             <div className="md:hidden">
-              <AccordionDemo title={filter.title} contents={filter.content} />
+              <AccordionDemo
+                title={filter.title}
+                contents={filter.content}
+                setCategory={setCategory}
+                category={category}
+              />
             </div>
             <Products payload={products.data?.payload} />
           </div>
