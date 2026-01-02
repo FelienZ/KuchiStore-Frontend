@@ -31,7 +31,7 @@ export default function WishlistItem({
             <img
               src={i.product.url}
               alt=""
-              className="md:w-[75%] h-[29vh] scale-80"
+              className="w-[85%] xl:scale-80 max-sm:h-35 max-sm:w-full h-55 xl:h-65 object-contain"
             />
             <h3 className="font-bold">{i.product.shortname}</h3>
             <p>

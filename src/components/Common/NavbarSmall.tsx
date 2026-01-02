@@ -7,7 +7,7 @@ type TriggerStatus = {
 export default function NavbarSmall({ isOpen }: TriggerStatus) {
   return (
     isOpen && (
-      <nav className="grid gap-3 pt-3 border-b divide-y">
+      <nav className={`grid gap-3 pt-3 border-b divide-y`}>
         <NavLink
           to="/"
           className={({ isActive }) =>
