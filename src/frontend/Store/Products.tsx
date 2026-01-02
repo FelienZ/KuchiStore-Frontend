@@ -10,17 +10,22 @@ export default function Products({
   const navigate = useNavigate();
   return (
     <section>
-      <div className="grid min-[440px]:grid-cols-2 min-[1100px]:grid-cols-4 gap-4 lg:gap-6 py-5">
+      <div className="grid grid-cols-2 min-[1100px]:grid-cols-4 gap-3 lg:gap-6 py-5">
         {payload!.map((i) => (
-          <Card key={i.id} className="rounded-sm text-center drop-shadow-sm">
-            <CardContent className="flex flex-col aspect-square justify-evenly items-center gap-4 md:px-4">
+          <Card
+            key={i.id}
+            className="rounded-sm max-[500px]:scale-y-85 max-[500px]:-my-6 text-center drop-shadow-sm"
+          >
+            <CardContent className="flex flex-col aspect-square justify-evenly items-center gap-2 md:gap-4 md:px-4">
               <img
                 src={i.url}
                 alt=""
-                className="w-[85%] max-sm:h-45 max-sm:w-full h-55 xl:h-65 object-contain"
+                className="w-[85%] xl:scale-85 max-sm:h-35 max-sm:w-full h-55 xl:h-65 object-contain"
               />
-              <div className="flex flex-col items-center gap-3">
-                <h3 className="font-bold">{i.shortname}</h3>
+              <div className="flex flex-col justify-between items-center gap-3">
+                <h3 className="font-bold max-sm:h-18 flex items-center">
+                  {i.shortname}
+                </h3>
                 <p>
                   {i.price
                     .toLocaleString("id-ID", {

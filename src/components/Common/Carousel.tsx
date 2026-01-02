@@ -26,10 +26,10 @@ export function CarouselSpacing({ payload, limit }: carouselData) {
           idx < limit ? (
             <CarouselItem
               key={i.id}
-              className="min-[360px]:basis-1/2 md:basis-1/3 xl:basis-1/4 "
+              className="basis-1/2 md:basis-1/3 xl:basis-1/4 "
             >
               <div className="p-1">
-                <Card className="rounded-sm py-2 text-center drop-shadow-sm">
+                <Card className="rounded-sm py-2 max-[360px]:scale-95 max-[360px]:-mx-2 text-center drop-shadow-sm">
                   <CardContent className="flex flex-col justify-evenly aspect-square items-center gap-2 md:gap-4 md:p-6">
                     <img
                       src={i.url}
